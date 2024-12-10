@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Starbucks Wait Time Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>About This Project</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/results">Model Results</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="overview">
+            <h2>Project Overview</h2>
+            <p>This project aims to predict the wait times at Starbucks based on factors such as time of day and day of the week. By analyzing historical data and training machine learning models, we strive to provide accurate predictions that can enhance customer experience and optimize staff scheduling.</p>
+        </section>
+
+        <section id="team">
+            <h2>Team Members</h2>
+            <ul>
+                <li>David Kaplansky</li>
+                <li>Dana Yim</li>
+                <li>Tsagaandari Battugs</li>
+                <li>Zi Jun Jiang </li>
+                <li>Ruiyang Cao </li>
+            </ul>
+        </section>
+
+        <section id="methodology">
+            <h2>Methodology</h2>
+            <ol>
+                <li><strong>Data Collection:</strong> Wait time data was collected at 15-minute intervals for four weeks.</li>
+                <li><strong>Data Preprocessing:</strong> Features such as time and wait duration were extracted and cleaned.</li>
+                <li><strong>Model Training:</strong> A Decision Tree Regressor was used to predict wait times.</li>
+                <li><strong>Evaluation:</strong> Model performance was evaluated using metrics such as Mean Squared Error (MSE).</li>
+            </ol>
+        </section>
+
+        <section id="features">
+            <h2>Features</h2>
+            <ul>
+                <li>Interactive visualizations of actual vs. predicted wait times.</li>
+                <li>Insights into peak hours and trends.</li>
+                <li>Model performance metrics to assess prediction accuracy.</li>
+            </ul>
+        </section>
+
+        <section id="acknowledgments">
+            <h2>Acknowledgments</h2>
+            <p>We thank our professor and mentors for their guidance. Special thanks to the Starbucks staff for their cooperation during data collection.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Starbucks Wait Time Prediction Project</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Results</title>
+</head>
+<body>
+    <header>
+        <h1>Model Results and Insights</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/results">Model Results</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="metrics">
+            <h2>Performance Metrics</h2>
+            <p><strong>Mean Squared Error (MSE):</strong> {{ mse }}</p>
+            <!-- Add other metrics if calculated -->
+            <p><strong>R-Squared:</strong> TBD</p>
+        </section>
+
+        <section id="insights">
+            <h2>Insights</h2>
+            <p>The Mean Squared Error (MSE) indicates that the model predicts wait times with a moderate level of accuracy. Further tuning or using additional features could improve performance.</p>
+            <p>Trends observed in the data include:</p>
+            <ul>
+                <li>Peak wait times occur between 8:00 AM and 10:00 AM.</li>
+                <li>Wait times decrease significantly in the late afternoon.</li>
+            </ul>
+        </section>
+
+        <section id="visualization">
+            <h2>Predictions vs Actuals</h2>
+            <canvas id="chart"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script type="text/javascript">
+                // Access the chart data passed from Flask to JavaScript
+                var chartData = JSON.parse('{{ chart_data | tojson }}');
+
+                // Create a Chart.js chart
+                var ctx = document.getElementById('chart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: 'line',
+                    data: chartData,
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Hour'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Wait Time (mins)'
+                                }
+                            }
+                        }
+                    }
+                });
+            </script>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Starbucks Wait Time Prediction Project</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
