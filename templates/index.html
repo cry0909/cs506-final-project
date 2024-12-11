@@ -16,16 +16,46 @@
         <ul>
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
-            <li><a href="{{ url_for('results') }}">Results</a></li>
+            <li><a href="{{ url_for('results') }}">Statistics</a></li>
         </ul>
     </nav>
 
     <main>
-        <section id="visualization">
+        <!-- Section for input form -->
+        <section id="input-prediction">
+            <h2>Enter Day and Time for Prediction</h2>
+            <form id="prediction-form">
+                <label for="day">Day of the Week:</label>
+                <select name="day" id="day" required>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+                <label for="time">Time of Day (Hour):</label>
+                <input type="number" name="time" id="time" min="0" max="23" required>
+                <button type="button" id="predict-button">Predict Wait Time</button>
+            </form>
+        </section>
+
+        <!-- Section for prediction result -->
+        <section id="prediction-result">
+            <h2>Predicted Wait Time</h2>
+            <p id="result-message">Enter a day and time to see the predicted wait time.</p>
+        </section>
+
+        <!-- Section for statistics -->
+        <section id="statistics">
             <h2>Visualization: Starbucks Wait Time Data</h2>
+            <h3>Average Wait Time Across Days</h3>
             <canvas id="avgWaitTimeChart" data-chart="{{ avg_wait_time_data }}"></canvas>
+            <h3>Predicted vs Actual Wait Time</h3>
             <canvas id="predVsActualChart" data-chart="{{ pred_vs_actual_data }}"></canvas>
         </section>
+        
     </main>
 
     <footer>
